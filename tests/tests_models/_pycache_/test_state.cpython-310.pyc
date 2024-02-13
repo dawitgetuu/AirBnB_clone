@@ -1,0 +1,48 @@
+o
+
+    >]êb©  ã                   @   sŽ   d Z ddlZddlZddlZddlmZ ddlmZ ddlmZ G dd„ dej	ƒZ
+G dd	„ d	ej	ƒZG d
+d„ dej	ƒZe
+dkrEe ¡  dS dS )
+zDefines unittests for models/state.py.
+
+Unittest classes:
+    TestState_instantiation
+    TestState_save
+    TestState_to_dict
+é    N)Údatetime)Úsleep)ÚStatec                   @   sx   e Zd ZdZdd„ Zdd„ Zdd„ Zdd	„ Zd
+d„ Zdd
+„ Z	dd„ Z
+dd„ Zdd„ Zdd„ Z
+dd„ Zdd„ Zdd„ ZdS )ÚTestState_instantiationz7Unittests for testing instantiation of the State class.c                 C   s   |   tttƒ ƒ¡ d S ©N)ÚassertEqualr   Útype©Úself© r   úJ/home/lexxyla/Desktop/Brennan/AirBnB_clone/tests/test_models/test_state.pyÚtest_no_args_instantiates   s   z1TestState_instantiation.test_no_args_instantiatesc                 C   s   |   tƒ tj ¡  ¡ ¡ d S r   )ÚassertInr   ÚmodelsÚstorageÚallÚvaluesr	   r   r   r   Ú#test_new_instance_stored_in_objects   s   z;TestState_instantiation.test_new_instance_stored_in_objectsc                 C   ó   |   tttƒ jƒ¡ d S r   )r   Ústrr   r   Úidr	   r   r   r   Útest_id_is_public_str   ó   z-TestState_instantiation.test_id_is_public_strc                 C   r   r   )r   r   r   r   Ú
+created_atr	   r   r   r   Ú"test_created_at_is_public_datetime   r   z:TestState_instantiation.test_created_at_is_public_datetimec                 C   r   r   )r   r   r   r   Ú
+updated_atr	   r   r   r   Ú"test_updated_at_is_public_datetime    r   z:TestState_instantiation.test_updated_at_is_public_datetimec                 C   s:   t ƒ }|  ttt jƒ¡ |  dt|ƒ¡ |  d|j¡ d S )NÚname)	r   r   r   r   r   r   ÚdirÚassertNotInÚ__dict__©r
+   Ústr   r   r   Ú#test_name_is_public_class_attribute#   s   z;TestState_instantiation.test_name_is_public_class_attributec                 C   s    t ƒ }t ƒ }|  |j|j¡ d S r   )r   ÚassertNotEqualr   ©r
+   Zst1Zst2r   r   r   Útest_two_states_unique_ids)   s   z2TestState_instantiation.test_two_states_unique_idsc                 C   ó(   t ƒ }tdƒ t ƒ }|  |j|j¡ d S ©Ngš™™™™™©?)r   r   Ú
+assertLessr   r%   r   r   r   Ú$test_two_states_different_created_at.   ó   z<TestState_instantiation.test_two_states_different_created_atc                 C   r'   r(   )r   r   r)   r   r%   r   r   r   Ú$test_two_states_different_updated_at4   r+   z<TestState_instantiation.test_two_states_different_updated_atc                 C   sl   t  ¡ }t|ƒ}tƒ }d|_| |_|_| ¡ }|  d|¡ |  d|¡ |  d| |¡ |  d| |¡ d S )NÚ123456z[State] (123456)z'id': '123456'z'created_at': z'updated_at': )	r   ÚtodayÚreprr   r   r   r   Ú__str__r   )r
+   ÚdtÚdt_reprr"   Zststrr   r   r   Útest_str_representation:   s   z/TestState_instantiation.test_str_representationc                 C   s   t d ƒ}|  d |j ¡ ¡ d S r   )r   r   r    r   r!   r   r   r   Útest_args_unusedF   s   z(TestState_instantiation.test_args_unusedc                 C   sL   t  ¡ }| ¡ }td||d}|  |jd¡ |  |j|¡ |  |j|¡ d S )NÚ345©r   r   r   )r   r.   Ú	isoformatr   r   r   r   r   )r
+   r1   Údt_isor"   r   r   r   Útest_instantiation_with_kwargsJ   s   z6TestState_instantiation.test_instantiation_with_kwargsc                 C   s>   |   t¡ td d d d W d   ƒ d S 1 sw   Y  d S )Nr6   )ÚassertRaisesÚ	TypeErrorr   r	   r   r   r   Ú#test_instantiation_with_None_kwargsR   s   "ÿz;TestState_instantiation.test_instantiation_with_None_kwargsN)Ú__name__Ú
+__module__Ú__qualname__Ú__doc__r
+   r   r   r   r   r#   r&   r*   r,   r3   r4   r9   r<   r   r   r   r   r      s    r   c                   @   sD   e Zd ZdZedd„ ƒZdd„ Zdd„ Zdd	„ Zd
+d„ Z	dd
+„ Z
+dS )ÚTestState_savez5Unittests for testing save method of the State class.c                 C   s(   z	t  dd¡ W d S  ty   Y d S w ©Nú	file.jsonÚtmp)ÚosÚrenameÚIOErrorr	   r   r   r   ÚsetUpZ   s
+   ÿzTestState_save.setUpc                 C   sJ   zt  d¡ W n	 ty   Y nw z	t  dd¡ W d S  ty$   Y d S w rB   )rE   ÚremoverG   rF   r	   r   r   r   ÚtearDowna   s   ÿÿzTestState_save.tearDownc                 C   s.   t ƒ }tdƒ |j}| ¡  |  ||j¡ d S r(   ©r   r   r   Úsaver)   )r
+   r"   Úfirst_updated_atr   r   r   Ú
+test_one_savek   s
+   zTestState_save.test_one_savec                 C   sP   t ƒ }tdƒ |j}| ¡  |j}|  ||¡ tdƒ | ¡  |  ||j¡ d S r(   rK   )r
+   r"   rM   Úsecond_updated_atr   r   r   Útest_two_savesr   s   zTestState_save.test_two_savesc                 C   ó@   t ƒ }|  t¡ | d ¡ W d   ƒ d S 1 sw   Y  d S r   )r   r:   r;   rL   r!   r   r   r   Útest_save_with_arg}   ó   "ÿz!TestState_save.test_save_with_argc                 C   sX   t ƒ }| ¡  d|j }tddƒ}|  || ¡ ¡ W d   ƒ d S 1 s%w   Y  d S )NzState.rC   Úr)r   rL   r   Úopenr   Úread)r
+   r"   ZstidÚfr   r   r   Útest_save_updates_file‚   s   
+"ÿz%TestState_save.test_save_updates_fileN)r=   r>   r?   r@   ÚclassmethodrH   rJ   rN   rP   rR   rX   r   r   r   r   rA   W   s    
+
+rA   c                   @   sH   e Zd ZdZdd„ Zdd„ Zdd„ Zdd	„ Zd
+d„ Zdd
+„ Z	dd„ Z
+dS )ÚTestState_to_dictz8Unittests for testing to_dict method of the State class.c                 C   s   |   tttƒ  ¡ ƒ¡ d S r   )Ú
+assertTrueÚdictr   r   Úto_dictr	   r   r   r   Útest_to_dict_type   s   z#TestState_to_dict.test_to_dict_typec                 C   sJ   t ƒ }|  d| ¡ ¡ |  d| ¡ ¡ |  d| ¡ ¡ |  d| ¡ ¡ d S )Nr   r   r   Ú	__class__)r   r   r]   r!   r   r   r   Ú"test_to_dict_contains_correct_keys   s
+   z4TestState_to_dict.test_to_dict_contains_correct_keysc                 C   s4   t ƒ }d|_d|_|  d|j¡ |  d| ¡ ¡ d S )NÚ	Holbertonéb   Ú	my_number)r   Úmiddle_namerc   r   r   r]   r!   r   r   r   Ú&test_to_dict_contains_added_attributes—   s
+   z8TestState_to_dict.test_to_dict_contains_added_attributesc                 C   sN   t ƒ }| ¡ }|  tt|d ƒ¡ |  tt|d ƒ¡ |  tt|d ƒ¡ d S )Nr   r   r   )r   r]   r   r   r   )r
+   r"   Zst_dictr   r   r   Ú)test_to_dict_datetime_attributes_are_strsž   s
+   z;TestState_to_dict.test_to_dict_datetime_attributes_are_strsc                 C   sJ   t  ¡ }tƒ }d|_| |_|_dd| ¡ | ¡ dœ}|  | ¡ |¡ d S )Nr-   r   )r   r_   r   r   )	r   r.   r   r   r   r   r7   ÚassertDictEqualr]   )r
+   r1   r"   Útdictr   r   r   Útest_to_dict_output¥   s   üz%TestState_to_dict.test_to_dict_outputc                 C   s   t ƒ }|  | ¡ |j¡ d S r   )r   r$   r]   r    r!   r   r   r   Ú!test_contrast_to_dict_dunder_dict²   s   z3TestState_to_dict.test_contrast_to_dict_dunder_dictc                 C   rQ   r   )r   r:   r;   r]   r!   r   r   r   Útest_to_dict_with_arg¶   rS   z'TestState_to_dict.test_to_dict_with_argN)r=   r>   r?   r@   r^   r`   re   rf   ri   rj   rk   r   r   r   r   rZ   Š   s    
+rZ   Ú__main__)r@   rE   r   Úunittestr   Útimer   Úmodels.stater   ÚTestCaser   rA   rZ   r=   Úmainr   r   r   r   Ú<module>   s   F32ÿ

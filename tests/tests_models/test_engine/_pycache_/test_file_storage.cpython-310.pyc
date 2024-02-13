@@ -1,0 +1,74 @@
+o
+
+    9¥ïb*  ã                   @   sÌ   d Z ddlZddlZddlZddlZddlmZ ddlmZ ddlm	Z	 ddl
+mZ ddlm
+Z
+ ddlmZ dd	lmZ dd
+lmZ ddlmZ G dd
+„ d
+ejƒZG dd„ dejƒZedkrde ¡  dS dS )z†Defines unittests for models/engine/file_storage.py.
+
+Unittest classes:
+    TestFileStorage_instantiation
+    TestFileStorage_methods
+é    N)Údatetime)Ú	BaseModel)ÚFileStorage)ÚUser)ÚState)ÚPlace)ÚCity)ÚAmenity)ÚReviewc                   @   s8   e Zd ZdZdd„ Zdd„ Zdd„ Zdd	„ Zd
+d„ ZdS )
+ÚTestFileStorage_instantiationz=Unittests for testing instantiation of the FileStorage class.c                 C   s   |   ttƒ ƒt¡ d S ©N)ÚassertEqualÚtyper   ©Úself© r   úU/home/lexxyla/Desktop/AirBnB_clone/tests/test_models/test_engine/test_file_storage.pyÚ&test_FileStorage_instantiation_no_args   ó   zDTestFileStorage_instantiation.test_FileStorage_instantiation_no_argsc                 C   s8   |   t¡
+ td ƒ W d   ƒ d S 1 sw   Y  d S r   )ÚassertRaisesÚ	TypeErrorr   r   r   r   r   Ú'test_FileStorage_instantiation_with_arg   s   
+"ÿzETestFileStorage_instantiation.test_FileStorage_instantiation_with_argc                 C   ó   |   tttjƒ¡ d S r   )r
+   Ústrr   r   Ú_FileStorage__file_pathr   r   r   r   Ú)test_FileStorage_file_path_is_private_str!   r   zGTestFileStorage_instantiation.test_FileStorage_file_path_is_private_strc                 C   r   r   )r
+   Údictr   r   Ú_FileStorage__objectsr   r   r   r   Ú'testFileStorage_objects_is_private_dict$   r   zETestFileStorage_instantiation.testFileStorage_objects_is_private_dictc                 C   s   |   ttjƒt¡ d S r   )r
+   r   ÚmodelsÚstorager   r   r   r   r   Útest_storage_initializes'   r   z6TestFileStorage_instantiation.test_storage_initializesN)	Ú__name__Ú
+__module__Ú__qualname__Ú__doc__r   r   r   r   r!   r   r   r   r   r      s    r   c                   @   sh   e Zd ZdZedd„ ƒZedd„ ƒZdd„ Zdd	„ Zd
+d„ Z	dd
+„ Z
+dd„ Zdd„ Zdd„ Z
+dd„ ZdS )ÚTestFileStorage_methodsz7Unittests for testing methods of the FileStorage class.c                 C   s(   z	t  dd¡ W d S  ty   Y d S w ©Nú	file.jsonÚtmp)ÚosÚrenameÚIOErrorr   r   r   r   ÚsetUp.   s
+   ÿzTestFileStorage_methods.setUpc                 C   sP   zt  d¡ W n	 ty   Y nw zt  dd¡ W n	 ty"   Y nw i t_d S r'   )r*   Úremover,   r+   r   r   r   r   r   r   ÚtearDown5   s   ÿÿ
+z TestFileStorage_methods.tearDownc                 C   s   |   tttj ¡ ƒ¡ d S r   )r
+   r   r   r   r    Úallr   r   r   r   Útest_allA   s   z TestFileStorage_methods.test_allc                 C   ó<   |   t¡ tj d ¡ W d   ƒ d S 1 sw   Y  d S r   )r   r   r   r    r0   r   r   r   r   Útest_all_with_argD   ó   "ÿz)TestFileStorage_methods.test_all_with_argc                 C   sà  t ƒ }tƒ }tƒ }tƒ }tƒ }tƒ }tƒ }tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ |  
+d|j tj ¡  
+¡ ¡ |  
+|tj ¡  ¡ ¡ d S ©Nú
+BaseModel.úUser.úState.úPlace.úCity.úAmenity.úReview.)r   r   r   r   r   r	   r
+   r   r    ÚnewÚassertInÚidr0   ÚkeysÚvalues)r   ÚbmÚusÚstÚplÚcyÚamÚrvr   r   r   Útest_newH   s8   z TestFileStorage_methods.test_newc                 C   s@   |   t¡ tj tƒ d¡ W d   ƒ d S 1 sw   Y  d S )Né   )r   r   r   r    r=   r   r   r   r   r   Útest_new_with_argsf   s   "ÿz*TestFileStorage_methods.test_new_with_argsc           
+      C   sB  t ƒ }tƒ }tƒ }tƒ }tƒ }tƒ }tƒ }tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 
+¡  d}tddƒL}	|	 ¡ }|  
+d|j |¡ |  
+d|j |¡ |  
+d|j |¡ |  
+d|j |¡ |  
+d|j |¡ |  
+d	|j |¡ |  
+d
+|j |¡ W d   ƒ d S 1 sšw   Y  d S )NÚ r(   Úrr6   r7   r8   r9   r:   r;   r<   )r   r   r   r   r   r	   r
+   r   r    r=   ÚsaveÚopenÚreadr>   r?   )
+r   rB   rC   rD   rE   rF   rG   rH   Z	save_textÚfr   r   r   Ú	test_savej   s4   
+"øz!TestFileStorage_methods.test_savec                 C   r2   r   )r   r   r   r    rN   r   r   r   r   Útest_save_with_arg…   r4   z*TestFileStorage_methods.test_save_with_argc           	      C   s  t ƒ }tƒ }tƒ }tƒ }tƒ }tƒ }tƒ }tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 	|¡ tj 
+¡  tj ¡  tj
+}|  d|j |¡ |  d|j |¡ |  d|j |¡ |  d|j |¡ |  d|j |¡ |  d|j |¡ |  d|j |¡ d S r5   )r   r   r   r   r   r	   r
+   r   r    r=   rN   Úreloadr   r   r>   r?   )	r   rB   rC   rD   rE   rF   rG   rH   Zobjsr   r   r   Útest_reload‰   s0   
+
+z#TestFileStorage_methods.test_reloadc                 C   r2   r   )r   r   r   r    rT   r   r   r   r   Útest_reload_with_arg£   r4   z,TestFileStorage_methods.test_reload_with_argN)r"   r#   r$   r%   Úclassmethodr-   r/   r1   r3   rI   rK   rR   rS   rU   rV   r   r   r   r   r&   +   s    
+
+r&   Ú__main__)r%   r*   Újsonr   Úunittestr   Úmodels.base_modelr   Úmodels.engine.file_storager   Úmodels.userr   Úmodels.stater   Úmodels.placer   Úmodels.cityr   Úmodels.amenityr	   Ú
+models.reviewr
+   ÚTestCaser   r&   r"   Úmainr   r   r   r   Ú<module>   s&   }ÿ
